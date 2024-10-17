@@ -56,9 +56,14 @@ module.exports = (grunt) ->
     sass:
       dist:
         options:
-          style: 'expanded'
-
-        files: sassSet
+          implementation: require('node-sass')
+        files: [{
+          expand: true
+          cwd: 'src/scss'
+          src: ['**/*.scss']
+          dest: 'dist/'
+          ext: '.css'
+        }]
 
     autoprefixer:
       dist:

@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>bigfoot</title>
+        <!-- External CSS for the default Bigfoot styles -->
+        <link rel="stylesheet" href="dist/bigfoot-default.css">
+        <!-- Google Fonts for better typography -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Custom styles -->
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+                color: #333;
+                padding: 20px;
+            }
+
+            h1 {
+                text-align: center;
+                color: #4CAF50;
+                font-weight: 700;
+            }
+
+            p {
+                font-size: 1.2em;
+                margin: 20px auto;
+                text-align: justify;
+                max-width: 800px;
+            }
+
+            sup a {
+                color: #4CAF50;
+                text-decoration: none;
+                border-bottom: 1px dashed #4CAF50;
+            }
+
+            sup a:hover {
+                color: #333;
+                border-bottom-color: #333;
+            }
+
+            .footnotes {
+                max-width: 800px;
+                margin: 50px auto 0;
+                font-size: 0.9em;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .footnotes ol {
+                list-style-position: inside;
+                padding-left: 0;
+            }
+
+            .footnote {
+                margin: 10px 0;
+            }
+
+            .footnote a {
+                text-decoration: none;
+                color: #4CAF50;
+                font-weight: bold;
+            }
+
+            .footnote a:hover {
+                color: #333;
+            }
+
+            /* Footer styles */
+            footer {
+                text-align: center;
+                margin-top: 50px;
+                font-size: 0.85em;
+                color: #777;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script src="dist/bigfoot.js"></script>
+        <script type="text/javascript">
+            $.bigfoot();
+        </script>    
+
+        <!-- Page content -->
+        <h1>Team 13's Updated Bigfoot Plugin</h1>
+        <p>
+            In this version of bigfoot, SpeechSynthesisUtterance() is used to play the audio from the footnote for the user's convenience.<sup id="fnref:1">
+                <a href="#fn:1" rel="footnote">1</a>
+            </sup>
+        </p>
+
+        <!-- Footnotes section -->
+        <div class="footnotes">
+            <ol>
+                <li class="footnote" id="fn:1">
+                    <p>SpeechSynthesisUtterance() is a Web API that allows you to convert text into speech using the browser's built-in speech synthesis capabilities. It is part of the Web Speech API, which provides the ability to programmatically interact with voice recognition and speech synthesis in web applications.<a href="#fnref:1" title="Return to article"> ↩</a></p>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            Forked from <a href="https://github.com/lemonmade/bigfoot?tab=readme-ov-file">Bigfoot.js</a>
+        </footer>
+    </body>
+</html>

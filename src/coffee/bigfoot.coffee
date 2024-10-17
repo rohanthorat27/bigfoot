@@ -66,7 +66,7 @@
       anchorPattern       : /(fn|footnote|note)[:\-_\d]/gi
 
       #*
-      # The tagname of the (possible) parent of the footnote link. This is really only necessary when you want to also get rid of that element — for instance, when the link is inside a `sup` tag. This tag and the link itself will be joined together for attribute from which you can drawn in your markup for footnotes/ buttons.
+      # The tagname of the (possible) parent of the footnote link. This is really only necessary when you want to also get rid of that element — for instance, when the link is inside a `sup` tag. This tag and the link itself will be joined together for attribute from which you can drawn in your markup for footnotes/ buttons.
       #
       # @access public
       # @author Chris Sauve
@@ -96,7 +96,7 @@
       deleteOnUnhover     : false
 
       #*
-      # The class name for the containing element of the original footnote content. Typically, this will be a class on an `li` that contained the footnote. This element may be removed/ hidden, depending on the option specified for `actionOriginalFN`. This string does not have to be an exact match — the class names will simply be tested for whether they include this string.
+      # The class name for the containing element of the original footnote content. Typically, this will be a class on an `li` that contained the footnote. This element may be removed/ hidden, depending on the option specified for `actionOriginalFN`. This string does not have to be an exact match — the class names will simply be tested for whether they include this string.
       #
       # @access public
       # @author Chris Sauve
@@ -720,14 +720,19 @@
           $content.find(".bigfoot-footnote__content").bindScrollHandler()
           $popoversCreated = $popoversCreated.add($content)
 
-      # Add active class after a delay to give it time to transition
+          $textToRead = $contentContainer.text().trim()
+          if $textToRead
+            readTextAloud($textToRead)
       setTimeout (->
         $popoversCreated.addClass "is-active"
       ), settings.popoverCreateDelay
 
       $popoversCreated
 
-
+    readTextAloud = (text) ->
+      $utterance = new SpeechSynthesisUtterance(text)
+      $utterance.lang = 'en-US'
+      window.speechSynthesis.speak($utterance)
 
     #*
     # Calculates the base font size for `em`- and `rem`-based sizing.

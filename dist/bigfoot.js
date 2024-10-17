@@ -1,7 +1,7 @@
 (function() {
   (function($) {
     return $.bigfoot = function(options) {
-      var addBreakpoint, baseFontSize, bigfoot, buttonHover, calculatePixelDimension, cleanFootnoteLinks, clickButton, createPopover, defaults, deleteEmptyOrHR, escapeKeypress, footnoteInit, getSetting, makeDefaultCallbacks, popoverStates, positionTooltip, removeBackLinks, removeBreakpoint, removePopovers, replaceWithReferenceAttributes, repositionFeet, roomCalc, settings, touchClick, unhoverFeet, updateSetting, viewportDetails;
+      var addBreakpoint, baseFontSize, bigfoot, buttonHover, calculatePixelDimension, cleanFootnoteLinks, clickButton, createPopover, defaults, deleteEmptyOrHR, escapeKeypress, footnoteInit, getSetting, makeDefaultCallbacks, popoverStates, positionTooltip, readTextAloud, removeBackLinks, removeBreakpoint, removePopovers, replaceWithReferenceAttributes, repositionFeet, roomCalc, settings, touchClick, unhoverFeet, updateSetting, viewportDetails;
       bigfoot = void 0;
       defaults = {
         actionOriginalFN: "hide",
@@ -251,7 +251,7 @@
         }
         $popoversCreated = $();
         $buttons.each(function() {
-          var $content, $contentContainer, $this, content;
+          var $content, $contentContainer, $textToRead, $this, content;
           $this = $(this);
           content = void 0;
           try {
@@ -272,12 +272,22 @@
             $this.addClass("is-active");
             $content.find(".bigfoot-footnote__content").bindScrollHandler();
             $popoversCreated = $popoversCreated.add($content);
+            $textToRead = $contentContainer.text().trim();
+            if ($textToRead) {
+              readTextAloud($textToRead);
+            }
           }
         });
         setTimeout((function() {
           return $popoversCreated.addClass("is-active");
         }), settings.popoverCreateDelay);
         return $popoversCreated;
+      };
+      readTextAloud = function(text) {
+        var $utterance;
+        $utterance = new SpeechSynthesisUtterance(text);
+        $utterance.lang = 'en-US';
+        return window.speechSynthesis.speak($utterance);
       };
       baseFontSize = function() {
         var el, size;
